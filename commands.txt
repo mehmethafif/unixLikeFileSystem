@@ -1,0 +1,12 @@
+./makeFileSystem 4 400 fileSystem.data
+./fileSystemOper fileSystem.data mkdir "/usr"
+./fileSystemOper fileSystem.data mkdir "/usr/ysa"
+./fileSystemOper fileSystem.data mkdir "/bin/ysa"    #prints error as intended
+./fileSystemOper fileSystem.data write "/usr/ysa/file1" linuxFile.data
+./fileSystemOper fileSystem.data write "/usr/file2" linuxFile.data
+./fileSystemOper fileSystem.data write "/file3" linuxFile.data
+./fileSystemOper fileSystem.data list "/"
+./fileSystemOper fileSystem.data del "/usr/ysa/file1"
+./fileSystemOper fileSystem.data dumpe2fs
+./fileSystemOper fileSystem.data read "/usr/file2" linuxFile_out.data
+cmp linuxFile_out.data linuxFile.data
